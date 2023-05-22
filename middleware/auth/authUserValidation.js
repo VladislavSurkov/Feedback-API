@@ -5,6 +5,7 @@ module.exports = {
   registerValidation: (req, res, next) => {
     const schema = Joi.object({
       name: Joi.string().min(3).max(30).required(),
+      username: Joi.string().min(3).max(30).required(),
       password: Joi.string()
         .regex(/[0-9a-zA-Z]*\d[0-9a-zA-Z]*/)
         .min(8)

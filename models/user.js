@@ -1,8 +1,8 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const moment = require("moment");
 
-const now = moment(Date.now()).format("YYYY/MM/DD");
+
+
 
 const userSchema = Schema(
   {
@@ -19,21 +19,13 @@ const userSchema = Schema(
       required: [true, "Email is required"],
       unique: true,
     },
-    phone: {
+    username: {
       type: String,
-      default: ''
+      required: true,
     },
     avatarURL: {
       type: String,
       default: null,
-    },
-    skype: {
-      type: String,
-      default: ''
-    },
-    birthday: {
-      type: String,
-      default: `${now}`,
     },
     token: {
       type: String,
