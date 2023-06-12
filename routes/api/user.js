@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const { user: ctrl } = require("../../controller");
-const {userInfoValidation, ctrlWrapper, uploadCloud,} = require("../../middleware");
+const {userInfoValidation, ctrlWrapper, uploadCloud, authMiddleware,} = require("../../middleware");
 
-// router.use(authMiddleware);
+router.use(authMiddleware);
 
 router.delete("/logout", ctrlWrapper(ctrl.logout));
 router.get("/current", ctrlWrapper(ctrl.currentUser));

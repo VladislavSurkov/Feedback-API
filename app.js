@@ -14,7 +14,6 @@ app.use(express.json());
 app.use("/auth", ctrl.authRouter);
 app.use("/user", ctrl.userRouter);
 app.use("/tasks", ctrl.taskRouter);
-app.use("/columns", ctrl.columnsRouter);
 
 app.use(errorHandler);
 

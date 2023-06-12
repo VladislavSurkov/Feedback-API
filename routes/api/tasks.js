@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const {  ctrlWrapper, addTaskValidation, updateTaskValidation } = require("../../middleware");
+const {  ctrlWrapper, addTaskValidation, updateTaskValidation, authMiddleware } = require("../../middleware");
 const { tasks: ctrl } = require("../../controller");
 
-// router.use(authMiddleware);
+router.use(authMiddleware);
 
 router.get("/", ctrlWrapper(ctrl.taskPerMth));
 router.post("/", addTaskValidation, ctrlWrapper(ctrl.addTask));

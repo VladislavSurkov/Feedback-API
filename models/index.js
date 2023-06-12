@@ -1,9 +1,9 @@
 const { User } = require('./user')
 const { Task } = require('./task')
-const { Column } = require('./comments')
+const { Comments } = require("./comments");
 
 module.exports = {
-    User,
-    Task,
-    Column
-}
+  User,
+  Task,
+  Comments,
+};
