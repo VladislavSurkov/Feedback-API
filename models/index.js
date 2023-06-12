@@ -1,6 +1,6 @@
 const { User } = require('./user')
 const { Task } = require('./task')
-const { Column } = require('./column')
+const { Column } = require('./comments')
 
 module.exports = {
     User,

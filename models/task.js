@@ -4,33 +4,11 @@ const taskSchema = Schema(
   {
     title: {
       type: String,
-      required: [true, "Set name for task"],
+      required: [true, "Set title"],
     },
-    start: {
+    category: {
       type: String,
-      required: true,
-    },
-    end: {
-      type: String,
-      required: true,
-    },
-    createAt: {
-      type: String,
-      required: true,
-    },
-    year: {
-      type: String,
-    },
-    month: {
-      type: String,
-    },
-    owner: {
-      type: SchemaTypes.ObjectId,
-      ref: "user",
-    },
-    priority: {
-      type: String,
-      enum: ["Low", "Medium", "High"],
+      enum: ["Feature", "Bug", "UX", "UI", "Enhancement"],
       default: "Low",
     },
     status: {
@@ -38,9 +16,17 @@ const taskSchema = Schema(
       enum: ["To do", "In progress", "Done"],
       default: "To do",
     },
-    columnId: {
+    description: {
+      type: String,
+      required: [true, "Set description"],
+    },
+    owner: {
       type: SchemaTypes.ObjectId,
-      ref: "column",
+      ref: "user",
+    },
+    comments: {
+      type: SchemaTypes.ObjectId,
+      ref: "comments",
     },
   },
   { versionKey: false }
