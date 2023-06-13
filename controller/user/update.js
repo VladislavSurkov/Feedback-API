@@ -7,8 +7,8 @@ const update = async (req, res) => {
   let updateParam = { ...bodyParam };
 
   if (req.file) {
-    const { path: avatarURL } = req.file;
-    updateParam = { avatarURL, ...bodyParam };
+    const { path: image } = req.file;
+    updateParam = { image, ...bodyParam };
   }
 
   if (!updateParam) throw new WrongParamsError({ message: `Missing field` });
@@ -16,7 +16,7 @@ const update = async (req, res) => {
   const user = await updateUser(id, updateParam);
   if (!user) throw new NotFoundError("User not found");
 
-  const { name, email, username, avatarURL } = user;
+  const { name, email, username, image } = user;
   res.json({
     status: "success",
     message: "User updated",
@@ -24,7 +24,7 @@ const update = async (req, res) => {
       name,
       email,
       username,
-      avatarURL,
+      image,
     },
   });
 };

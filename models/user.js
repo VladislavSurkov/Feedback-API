@@ -23,7 +23,7 @@ const userSchema = Schema(
       type: String,
       required: true,
     },
-    avatarURL: {
+    image: {
       type: String,
       default: null,
     },

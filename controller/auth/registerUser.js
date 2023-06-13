@@ -16,7 +16,7 @@ const registerUser = async (req, res, next) => {
     token,
     user: {
       name: logUser.name,
-      avatarURL: logUser.avatarURL,
+      image: logUser.image,
     },
   });
 };
