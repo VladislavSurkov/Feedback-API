@@ -15,8 +15,10 @@ const registerUser = async (req, res, next) => {
   res.status(201).json({
     token,
     user: {
+      email: logUser.email,
       name: logUser.name,
       image: logUser.image,
+      username: logUser.username,
     },
   });
 };
