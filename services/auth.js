@@ -5,8 +5,8 @@ const findUserBy = async (data) => {
   return await User.findOne(data);
 };
 
-const regUser = async ({ name, email, password }) => {
-  return await User.create({ name, email, password });
+const regUser = async (body) => {
+  return await User.create(body);
 };
 
 const login = async ({ _id }, token) => {
