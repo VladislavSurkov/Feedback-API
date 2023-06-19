@@ -4,7 +4,7 @@ const { ValidationError } = require("../../helpers/errors");
 module.exports = {
   registerValidation: (req, res, next) => {
     const schema = Joi.object({
-      name: Joi.string().min(3).max(30).required(),
+      name: Joi.string().min(3).max(30),
       username: Joi.string().min(3).max(30).required(),
       password: Joi.string()
         .regex(/[0-9a-zA-Z]*\d[0-9a-zA-Z]*/)
