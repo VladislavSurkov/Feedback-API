@@ -1,8 +1,8 @@
 const { Task } = require("../models");
 const { NotFoundError } = require("../helpers/errors");
 
-const findTasks = async (owner, year, month) => {
-  const tasks = await Task.find({ owner, year, month }).populate(
+const findTasks = async () => {
+  const tasks = await Task.find().populate(
     "owner",
     "_id name avatarURL"
   );
