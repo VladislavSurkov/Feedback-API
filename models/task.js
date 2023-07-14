@@ -20,6 +20,10 @@ const taskSchema = Schema(
       type: String,
       required: [true, "Set description"],
     },
+    upvotes: {
+      type: Number,
+      default: 0,
+    },
     owner: {
       type: SchemaTypes.ObjectId,
       ref: "user",
