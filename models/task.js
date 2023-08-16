@@ -9,12 +9,12 @@ const taskSchema = Schema(
     category: {
       type: String,
       enum: ["Feature", "Bug", "UX", "UI", "Enhancement"],
-      default: "Low",
+      required: [true, "Choose category"],
     },
     status: {
       type: String,
-      enum: ["To do", "In progress", "Done"],
-      default: "To do",
+      enum: ["Planned", "In-Progress", "Live"],
+      default: "Planned",
     },
     description: {
       type: String,
