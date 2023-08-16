@@ -19,7 +19,7 @@ module.exports = {
   updateTaskValidation: (req, res, next) => {
     const schema = Joi.object({
       title: Joi.string().required(),
-      category: Joi.string().valid("UI", "UX", "Enhancement", "Bug", "Feature"),
+      category: Joi.string().valid("UI", "UX", "Enhancement", "Bug", "Feature").required(),
       status: Joi.string(),
       upvotes: Joi.number(),
       description: Joi.string().required(),
