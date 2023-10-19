@@ -2,7 +2,11 @@ const { errorHandler } = require("./api/errorHandler");
 const { ctrlWrapper } = require("./api/ctrlWrapper");
 const { authMiddleware } = require("./auth/authMiddleware");
 const { uploadCloud } = require("./user/uploadCloud");
-const { addTaskValidation, updateTaskValidation } = require('./task/taskValidation')
+const {
+  addTaskValidation,
+  updateTaskValidation,
+  upvotesValidation,
+} = require("./task/taskValidation");
 const {
   loginValidation,
   registerValidation,
@@ -18,5 +22,6 @@ module.exports = {
   registerValidation,
   addTaskValidation,
   userInfoValidation,
-  updateTaskValidation
+  updateTaskValidation,
+  upvotesValidation,
 };
