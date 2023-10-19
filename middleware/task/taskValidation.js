@@ -32,14 +32,4 @@ module.exports = {
     }
     next();
   },
-  upvotesValidation: (req, res, next) => {
-    const schema = Joi.object({
-      userId: Joi.string().required(),
-    });
-    const validationResult = schema.validate(req.body);
-    if (validationResult.error) {
-      next(new ValidationError(validationResult.error.details));
-    }
-    next();
-  },
 };

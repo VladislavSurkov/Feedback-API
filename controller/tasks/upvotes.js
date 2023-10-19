@@ -1,10 +1,10 @@
 const { toggleUpvote } = require("../../services/tasks");
 
 const upvotesTask = async (req, res, next) => {
-  const { userId } = req.body;
-  const { id } = req.params;
+  const userId = req.user.id;
+  const taskid = req.params.id;
 
-  const task = await toggleUpvote(id, userId);
+  const task = await toggleUpvote(taskid, userId);
   res.json({
     task,
   });
