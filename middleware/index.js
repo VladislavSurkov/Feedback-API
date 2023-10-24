@@ -5,13 +5,12 @@ const { uploadCloud } = require("./user/uploadCloud");
 const {
   addTaskValidation,
   updateTaskValidation,
-  upvotesValidation,
 } = require("./task/taskValidation");
 const {
   loginValidation,
   registerValidation,
 } = require("./auth/authUserValidation");
-const { userInfoValidation } = require('./user/userInfoValidation')
+const { userInfoValidation } = require("./user/userInfoValidation");
 
 module.exports = {
   errorHandler,
@@ -23,5 +22,4 @@ module.exports = {
   addTaskValidation,
   userInfoValidation,
   updateTaskValidation,
-  upvotesValidation,
 };
