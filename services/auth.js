@@ -24,16 +24,8 @@ const createToken = ({ _id }) => {
 
 const verifyToken = async (token) => {
   const { JWT_SECRET_KEY } = process.env;
-  
-  return new Promise((resolve, reject) => {
-    jwt.verify(token, JWT_SECRET_KEY, (err, decoded) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(decoded);
-      }
-    });
-  });
+
+  return jwt.verify(token, JWT_SECRET_KEY, { ignoreExpiration: true });
 };
 
 module.exports = {
