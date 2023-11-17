@@ -1,5 +1,5 @@
 const { Unauthorized } = require("../../helpers/errors");
-const { createToken, verifyToken } = require("../../services/auth");
+const { createToken, verifyToken, login } = require("../../services/auth");
 
 const refreshToken = async (req, res) => {
   const { refreshToken } = req.body;
@@ -8,6 +8,8 @@ const refreshToken = async (req, res) => {
 
   const decoded = await verifyToken(refreshToken);
   const newAccessToken = await createToken({ _id: decoded.id });
+
+  await login({ _id: decoded.id }, newAccessToken);
 
   res.json({ accessToken: newAccessToken });
 };

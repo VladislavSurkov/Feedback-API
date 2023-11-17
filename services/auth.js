@@ -19,7 +19,7 @@ const createToken = ({ _id }) => {
     id: _id,
   };
 
-  return jwt.sign(playload, JWT_SECRET_KEY, { expiresIn: "1m" });
+  return jwt.sign(playload, JWT_SECRET_KEY, { expiresIn: "1h" });
 };
 
 const verifyToken = async (token) => {
