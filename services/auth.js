@@ -22,9 +22,24 @@ const createToken = ({ _id }) => {
   return jwt.sign(playload, JWT_SECRET_KEY, { expiresIn: "1h" });
 };
 
+const verifyToken = async (token) => {
+  const { JWT_SECRET_KEY } = process.env;
+  
+  return new Promise((resolve, reject) => {
+    jwt.verify(token, JWT_SECRET_KEY, (err, decoded) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(decoded);
+      }
+    });
+  });
+};
+
 module.exports = {
   findUserBy,
   regUser,
   login,
   createToken,
+  verifyToken,
 };

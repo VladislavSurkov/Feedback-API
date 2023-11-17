@@ -5,5 +5,6 @@ const { auth: ctrl } = require("../../controller");
 
 router.post("/register", registerValidation, ctrlWrapper(ctrl.registerUser));
 router.post("/login", loginValidation, ctrlWrapper(ctrl.loginUser));
+router.post("/refresh-token", ctrlWrapper(ctrl.refreshToken));
 
 module.exports = router;

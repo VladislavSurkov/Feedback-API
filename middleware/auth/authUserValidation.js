@@ -1,45 +1,31 @@
 const Joi = require("joi");
-const { ValidationError } = require("../../helpers/errors");
+
+const { validateBody } = require("../../helpers/validateBody");
+
+const userSchema = Joi.object({
+  name: Joi.string().min(3).max(30),
+  username: Joi.string().min(3).max(30),
+  password: Joi.string()
+    .regex(/[0-9a-zA-Z]*\d[0-9a-zA-Z]*/)
+    .min(8)
+    .max(16),
+  email: Joi.string().email({ maxDomainSegments: 2, tlds: { deny: ["ru"] } }),
+}).required();
+
+const refreshSchema = Joi.object({
+  refreshToken: Joi.string().required(),
+});
+
+const registerValidation = validateBody(userSchema);
+const loginValidation = validateBody(
+  userSchema.keys({ name: Joi.forbidden(), username: Joi.forbidden() })
+);
+
+const refreshValidation = validateBody(refreshSchema);
 
 module.exports = {
-  registerValidation: (req, res, next) => {
-    const schema = Joi.object({
-      name: Joi.string().min(3).max(30).required(),
-      username: Joi.string().min(3).max(30).required(),
-      password: Joi.string()
-        .regex(/[0-9a-zA-Z]*\d[0-9a-zA-Z]*/)
-        .min(8)
-        .max(16)
-        .required(),
-      email: Joi.string()
-        .email({ maxDomainSegments: 2, tlds: { deny: ["ru"] } })
-        .required(),
-    });
+  registerValidation,
+  loginValidation,
 
-    const validationResult = schema.validate(req.body);
-    if (validationResult.error) {
-      next(new ValidationError(validationResult.error.details));
-    }
-    next();
-  },
-  loginValidation: (req, res, next) => {
-    const schema = Joi.object({
-      password: Joi.string()
-        .regex(/[0-9a-zA-Z]*\d[0-9a-zA-Z]*/)
-        .min(8)
-        .max(16)
-        .required(),
-      email: Joi.string()
-        .email({ maxDomainSegments: 2, tlds: { deny: ["ru"] } })
-        .required(),
-    });
-    const validationResult = schema.validate(req.body);
-    if (validationResult.error) {
-      next(new ValidationError(validationResult.error.details));
-    }
-    next();
-  },
-
-
-
+  refreshValidation,
 };
