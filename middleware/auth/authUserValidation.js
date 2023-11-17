@@ -1,5 +1,4 @@
 const Joi = require("joi");
-
 const { validateBody } = require("../../helpers/validateBody");
 
 const userSchema = Joi.object({
@@ -16,16 +15,15 @@ const refreshSchema = Joi.object({
   refreshToken: Joi.string().required(),
 });
 
-const registerValidation = validateBody(userSchema);
-const loginValidation = validateBody(
+const registerValid = validateBody(userSchema);
+const loginValid = validateBody(
   userSchema.keys({ name: Joi.forbidden(), username: Joi.forbidden() })
 );
 
-const refreshValidation = validateBody(refreshSchema);
+const refreshValid = validateBody(refreshSchema);
 
 module.exports = {
-  registerValidation,
-  loginValidation,
-
-  refreshValidation,
+  registerValid,
+  loginValid,
+  refreshValid,
 };

@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { registerValidation, loginValidation, ctrlWrapper } = require("../../middleware");
+const { registerValid, refreshValid, loginValid, ctrlWrapper } = require("../../middleware");
 const { auth: ctrl } = require("../../controller");
 
-router.post("/register", registerValidation, ctrlWrapper(ctrl.registerUser));
-router.post("/login", loginValidation, ctrlWrapper(ctrl.loginUser));
-router.post("/refresh-token", ctrlWrapper(ctrl.refreshToken));
+router.post("/register", registerValid, ctrlWrapper(ctrl.registerUser));
+router.post("/login", loginValid, ctrlWrapper(ctrl.loginUser));
+router.post("/refresh-token", refreshValid, ctrlWrapper(ctrl.refreshToken));
 
 module.exports = router;
